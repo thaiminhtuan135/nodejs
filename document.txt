@@ -1,0 +1,14 @@
+"migration:generate": "npm run typeorm -- --dataSource=src/database/data-source.ts migration:generate",
+    "migration:create": "npm run typeorm -- migration:create",
+    "migration:run": "npm run typeorm -- --dataSource=src/database/data-source.ts migration:run",
+    "migration:revert": "npm run typeorm -- --dataSource=src/database/data-source.ts migration:revert",
+    "schema:drop": "npm run typeorm -- --dataSource=src/database/data-source.ts schema:drop",
+    "seed:run": "ts-node -r tsconfig-paths/register ./src/database/seeds/run-seed.ts"
+
+
+
+  "migration:run": "npm run typeorm migration:run -- -d ./db/typeorm.config.ts",
+      "migration:generate": "npm run typeorm -- -d ./db/typeorm.config.ts migration:generate ./db/migrations/%npm_config_name%",
+      "migration:create": "npm run typeorm -- migration:create ./db/migrations/$npm_config_name",
+      "migration:revert": "npm run typeorm -- -d ./db/typeorm.config.ts migration:revert",
+      "migration:show": "npm run typeorm -- migration:show -d ./db/typeorm.config.ts"

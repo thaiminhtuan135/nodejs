@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    container_name: billiard_test
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: billiards
+      TZ: 'GMT'
+      PGTZ: 'GMT'
+    ports:
+      - '12345:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  pgdata:
+    driver: local
