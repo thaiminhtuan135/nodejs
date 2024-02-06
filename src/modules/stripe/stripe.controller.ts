@@ -117,4 +117,23 @@ export class StripeController {
     // const event =await this.stripe.webhooks.constructEvent()
     return 'chuan bai';
   }
+  @Post('/hihi')
+  async checkout() {
+    console.log('dsad');
+    //
+    const session = await this.stripe.checkout.sessions.create({
+      customer: 'cus_PVKyJxnj74LL55',
+      line_items: [
+        {
+          price: 'price_1OgiBCJ9DfixT1i31Ry9T6Ae', // https://dashboard.stripe.com/test/products/ link get price id
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: `http://localhost:3000`,
+      cancel_url: `http://localhost:3000/`,
+    });
+    // console.log(session);
+    return session;
+  }
 }
